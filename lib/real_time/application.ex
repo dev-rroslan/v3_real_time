@@ -6,6 +6,8 @@ defmodule RealTime.Application do
   use Application
 
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       # Start the Ecto repository
       RealTime.Repo,
@@ -17,6 +19,8 @@ defmodule RealTime.Application do
       RealTimeWeb.Endpoint,
       # Start a worker by calling: RealTime.Worker.start_link(arg)
       # {RealTime.Worker, arg}
+      # setup for clustering
+      {Cluster.Supervisor, [topologies, [name: HelloElixir.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
