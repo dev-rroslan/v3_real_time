@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./custom.css";
+@import "./live_view.css";
+
 /* For Phoenix Live reload script */
 [hidden] {
   display: none;

@@ -27,6 +27,9 @@ import {LiveSocket} from "phoenix_live_view"
 import topbar from "topbar"
 import Alpine from "alpinejs"
 
+//import Hooks from "./hooks";
+import Uploaders from "./uploaders";
+
 window.Alpine = Alpine;
 Alpine.start()
 
@@ -39,6 +42,7 @@ let csrfToken = document
 
 let liveSocket = new LiveSocket('/live', Socket, {
   hooks: Hooks,
+  uploaders: Uploaders,
   params: { _csrf_token: csrfToken },
   dom: {
     onBeforeElUpdated(from, to) {

@@ -21,6 +21,31 @@ defmodule RealTimeWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/light", LightLive
+    live "/license", LicenseLive
+    live "/sales-dashboard", SalesDashboardLive
+    live "/search", SearchLive
+    live "/autocomplete", AutocompleteLive
+    live "/filter", FilterLive
+    live "/servers", ServersLive
+    live "/servers/new", ServersLive, :new
+    live "/paginate", PaginateLive
+    live "/sort", SortLive
+    live "/volunteers", VolunteersLive
+    live "/infinite-scroll", InfiniteScrollLive
+    live "/sandbox", SandboxLive
+    live "/chart", ChartLive
+    live "/map", MapLive
+    live "/key-events", KeyEventsLive
+    live "/desks", DesksLive
+    live "/underwater", UnderwaterLive
+    live "/underwater/show", UnderwaterLive, :show_modal
+    live "/products", ProductLive.Index, :index
+    live "/products/new", ProductLive.Index, :new
+    live "/products/:id/edit", ProductLive.Index, :edit
+
+    live "/products/:id", ProductLive.Show, :show
+    live "/products/:id/show/edit", ProductLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
@@ -61,6 +86,8 @@ defmodule RealTimeWeb.Router do
 
   scope "/", RealTimeWeb do
     pipe_through [:browser, :require_authenticated_user]
+    live "/topsecret", TopSecretLive
+
 
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update

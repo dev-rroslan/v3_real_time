@@ -41,7 +41,7 @@ COPY assets assets
 COPY lib lib
 
 # build assets
-RUN npm run --prefix ./assets deploy
+#RUN npm run --prefix ./assets deploy
 #RUN mix phx.digest
 RUN mix assets.deploy
 
